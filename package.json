@@ -4,7 +4,9 @@
   "description": "Web application for search people in Facebook",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "prod": "webpack --config ./webpack.config.prod.js ",
+    "dev": "webpack-dev-server --config ./webpack.config.dev.js --open "
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,8 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "webpack-merge": "^2.1.0"
   },
   "dependencies": {
     "react": "^15.4.1",
