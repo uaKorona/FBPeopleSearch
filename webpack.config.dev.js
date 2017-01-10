@@ -41,9 +41,9 @@ module.exports = merge(config, {
 
         port: 3000,
 
-        clientLogLevel: 'error',
+        //clientLogLevel: 'error',
 
-        stats: "errors-only",
+        //stats: "errors-only",
 
         compress: true,
     },

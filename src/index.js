@@ -24,3 +24,5 @@ if (module.hot) {
         render(NewApp)
     });
 }
+
+var ccc;
