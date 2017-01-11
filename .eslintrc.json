@@ -1,8 +1,16 @@
 {
-
+  "env": {
+    "browser": true
+  },
+  "plugins": [
+    "react"
+  ],
   "parser": "babel-eslint",
-
+  "extends": "airbnb",
   "rules": {
-    "no-unused-vars": 1
+    "linebreak-style": ["error", "windows"],
+    "no-unused-vars": 1,
+
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }

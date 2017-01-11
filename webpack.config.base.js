@@ -19,12 +19,6 @@ module.exports = {
 
         rules: [
             {
-                enforce: 'pre',
-                test: /\.js$/,
-                loader: 'eslint-loader?{rules:{"no-unused-vars": 1}}',
-                exclude: /node_modules/
-            },
-            {
                 test: /\.js$/,
                 use: [
                     'babel-loader',
@@ -40,19 +34,5 @@ module.exports = {
                 ],
             },
         ],
-    },
-
-    plugins: [
-        new webpack.LoaderOptionsPlugin({
-            eslint: {
-                emitError: true,
-                emitWarning:true,
-                failOnWarning: true,
-                failOnError: true
-            }
-        })
-    ]
-
-
-
+    }
 };
