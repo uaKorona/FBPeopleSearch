@@ -34,7 +34,7 @@ module.exports = merge(config, {
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'eslint-loader?{rules:{"no-unused-vars": 1}}',
+        loader: 'eslint-loader',
         exclude: /node_modules/
       },
     ]

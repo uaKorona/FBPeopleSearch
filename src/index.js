@@ -19,9 +19,9 @@ render(App);
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./components/App', () => {
+    /* eslint-disable global-require*/
     const NewApp = require('./components/App').default;
+    /* eslint-enable global-require*/
     render(NewApp);
   });
 }
-
-var ccc;
