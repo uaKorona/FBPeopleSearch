@@ -57,6 +57,8 @@ module.exports = merge(config, {
     stats: "errors-only",
 
     compress: true,
+
+    historyApiFallback: true
   },
 
 

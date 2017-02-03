@@ -1,27 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import { AppContainer } from 'react-hot-loader'; // AppContainer is a necessary wrapper component for HMR
+import routes from './routes';
 
-import { AppContainer } from 'react-hot-loader';
-// AppContainer is a necessary wrapper component for HMR
-
-import { App } from './components/App';
-
-const render = (Component) => {
+const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <Router history={browserHistory} routes={routes} />
     </AppContainer>,
     document.getElementById('root'));
 };
 
-render(App);
+
+render();
 
 // Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./components/App', () => {
-    /* eslint-disable global-require*/
-    const NewApp = require('./components/App').default;
-    /* eslint-enable global-require*/
-    render(NewApp);
+    render();
   });
 }

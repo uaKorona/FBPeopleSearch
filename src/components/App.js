@@ -7,10 +7,4 @@ const App = () => (
   </div>
 );
 
-export { App };
-
-const AppF = function App2() {
-  return <h3>You!!!</h3>;
-};
-
-export { AppF };
+export default App;
