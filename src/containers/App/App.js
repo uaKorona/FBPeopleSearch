@@ -10,8 +10,7 @@ injectTapEventPlugin();
 const App = () => (
   <MuiThemeProvider>
     <div className={styles.app}>
-      <h2>Hello, World 2</h2>
-      <AppBar title="My AppBar" />
+      <AppBar title="FBPeopleSearch" />
     </div>
   </MuiThemeProvider>
 );
