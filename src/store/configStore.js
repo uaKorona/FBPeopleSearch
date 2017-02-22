@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
-import rootReducer from "../reducers";
+import rootReducer from '../reducers';
 import redirect from '../middleware/redirect';
 
 export default function configStore(initialState) {
@@ -12,8 +12,8 @@ export default function configStore(initialState) {
     applyMiddleware(
       thunk,
       logger,
-      redirect
-    )
+      redirect,
+    ),
   );
 
   return store;
