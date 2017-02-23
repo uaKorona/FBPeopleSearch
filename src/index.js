@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader'; // AppContainer is a necessary 
 import { Provider } from 'react-redux';
 
 import routes from './routes';
-import configStore from "./store/configStore";
+import configStore from './store/configStore';
 
 const store = configStore();
 

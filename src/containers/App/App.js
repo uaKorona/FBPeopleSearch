@@ -12,10 +12,10 @@ injectTapEventPlugin();
 
 class App extends React.Component {
 
-  propTypes = {
+  static propTypes = {
     actions: React.PropTypes.shape({
-      gotoSettings: React.PropTypes.func.isRequired
-    })
+      gotoSettings: React.PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   onSettingsIconTouchTap(event) {
@@ -29,7 +29,7 @@ class App extends React.Component {
     return (
       <MuiThemeProvider>
         <div className={styles.app}>
-          <AppBar title="FBPeopleSearch" onLeftIconButtonTouchTap={this.onSettingsIconTouchTap}/>
+          <AppBar title="FBPeopleSearch" onLeftIconButtonTouchTap={this.onSettingsIconTouchTap} />
         </div>
       </MuiThemeProvider>
     );
@@ -38,12 +38,12 @@ class App extends React.Component {
 
 
 function mapStateToProps() {
-  return {}
+  return {};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(MainMenuActions, dispatch)
+    actions: bindActionCreators(MainMenuActions, dispatch),
   };
 }
 
