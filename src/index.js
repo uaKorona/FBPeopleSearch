@@ -3,18 +3,24 @@ import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { AppContainer } from 'react-hot-loader'; // AppContainer is a necessary wrapper component for HMR
 import { Provider } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import routes from './routes';
 import configStore from './store/configStore';
+
+injectTapEventPlugin();
 
 const store = configStore();
 
 const render = () => {
   ReactDOM.render(
     <AppContainer>
-      <Provider store={store}>
-        <Router history={browserHistory} routes={routes} />
-      </Provider>
+      <MuiThemeProvider>
+        <Provider store={store}>
+          <Router history={browserHistory} routes={routes} />
+        </Provider>
+      </MuiThemeProvider>
     </AppContainer>,
     document.getElementById('root'));
 };

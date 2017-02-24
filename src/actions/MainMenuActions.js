@@ -7,6 +7,7 @@ export function gotoSettings(payload) {
     /* eslint-enable no-console*/
     dispatch({
       type: GOTO_SETTINGS,
+      payload,
     });
   };
 }
