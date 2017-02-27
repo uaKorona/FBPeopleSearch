@@ -5,7 +5,7 @@ export default class Settings extends React.Component {
 
   render() {
     return (
-      <div>{this.title}</div>
+      <div>Settings: {this.title}</div>
     );
   }
 }

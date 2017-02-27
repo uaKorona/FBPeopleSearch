@@ -13,6 +13,7 @@ class App extends React.Component {
     actions: React.PropTypes.shape({
       gotoSettings: React.PropTypes.func.isRequired,
     }).isRequired,
+    children: React.PropTypes.element.isRequired,
   };
 
   onSettingsIconTouchTap = (event) => {
@@ -26,6 +27,8 @@ class App extends React.Component {
     return (
       <div className={styles.app}>
         <AppBar title="FBPeopleSearch" onLeftIconButtonTouchTap={this.onSettingsIconTouchTap} />
+
+        {this.props.children}
       </div>
     );
   }
