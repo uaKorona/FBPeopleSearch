@@ -1,17 +1,21 @@
 import { ROUTING } from '../constants/Routing';
 
-export function gotoSettings(payload) {
+function goTo(nextUrl) {
   return (dispatch) => {
-    console.log(payload); // eslint-disable-line no-console
-
     dispatch({
       type: ROUTING,
       payload: {
-        nextUrl: '/settings',
+        nextUrl,
       },
     });
   };
 }
 
-export function gotoHome() {
+export function gotoSettings() {
+  return goTo('/settings');
 }
+
+export function gotoHome() {
+  return goTo('/');
+}
+
