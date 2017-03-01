@@ -3,8 +3,10 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 
 import * as MainMenuActions from '../../actions/MainMenuActions';
+import { ROUTE_SETTINGS } from '../../constants/Routing';
 import styles from './App.css';
 
 class App extends React.Component {
@@ -17,10 +19,18 @@ class App extends React.Component {
     children: React.PropTypes.element,
   };
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  };
+
   static defaultProps = {
     children: '',
     showSettingsIcon: true,
   };
+
+  componentWillMount() {
+    this.showSettingsIcon = !this.context.router.isActive(ROUTE_SETTINGS);
+  }
 
   onSettingsIconTouchTap = () => {
     this.showSettingsIcon = false;
@@ -61,4 +71,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

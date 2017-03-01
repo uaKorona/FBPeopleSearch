@@ -1,4 +1,4 @@
-import { ROUTING } from '../constants/Routing';
+import { ROUTING, ROUTE_SETTINGS } from '../constants/Routing';
 
 function goTo(nextUrl) {
   return (dispatch) => {
@@ -12,7 +12,7 @@ function goTo(nextUrl) {
 }
 
 export function gotoSettings() {
-  return goTo('/settings');
+  return goTo(ROUTE_SETTINGS);
 }
 
 export function gotoHome() {
