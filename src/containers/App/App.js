@@ -1,6 +1,10 @@
 import React from 'react';
 
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import ActionHome from 'material-ui/svg-icons/action/home';
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
@@ -29,29 +33,37 @@ class App extends React.Component {
   };
 
   componentWillMount() {
-    this.showSettingsIcon = !this.context.router.isActive(ROUTE_SETTINGS);
+    this.leftIcon = this.getLeftIcon(!this.context.router.isActive(ROUTE_SETTINGS));
   }
 
   onSettingsIconTouchTap = () => {
-    this.showSettingsIcon = false;
+    this.leftIcon = this.getLeftIcon(false);
     this.props.actions.gotoSettings({ name: 'Alex' });
   };
 
   onTitleTouchTap = () => {
-    this.showSettingsIcon = true;
+    this.leftIcon = this.getLeftIcon(true);
     this.props.actions.gotoHome();
   };
 
-  showSettingsIcon = true;
+  getLeftIcon(isHome) {
+    return (
+      <IconButton>
+        { isHome ? <NavigationMenu /> : <ActionHome /> }
+      </IconButton>
+    );
+  }
+
+  leftIcon;
 
   render() {
     return (
       <div className={styles.app}>
         <AppBar
           title="FBPeopleSearch"
+          iconElementLeft={this.leftIcon}
           onLeftIconButtonTouchTap={this.onSettingsIconTouchTap}
           onTitleTouchTap={this.onTitleTouchTap}
-          showMenuIconButton={this.showSettingsIcon}
         />
 
         {this.props.children}
