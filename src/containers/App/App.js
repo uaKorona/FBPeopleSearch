@@ -47,9 +47,16 @@ class App extends React.Component {
   };
 
   getLeftIcon(isHome) {
+    if (isHome) {
+      return (
+        <IconButton onClick={this.onSettingsIconTouchTap}>
+          <NavigationMenu />
+        </IconButton>
+      );
+    }
     return (
-      <IconButton>
-        { isHome ? <NavigationMenu /> : <ActionHome /> }
+      <IconButton onClick={this.onTitleTouchTap}>
+        <ActionHome />
       </IconButton>
     );
   }
@@ -62,8 +69,6 @@ class App extends React.Component {
         <AppBar
           title="FBPeopleSearch"
           iconElementLeft={this.leftIcon}
-          onLeftIconButtonTouchTap={this.onSettingsIconTouchTap}
-          onTitleTouchTap={this.onTitleTouchTap}
         />
 
         {this.props.children}
