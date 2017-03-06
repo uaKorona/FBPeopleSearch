@@ -1,3 +1,11 @@
-/**
- * Created by roman.kovalskyi on 3/3/2017.
- */
+import React from 'react';
+
+export default class Login extends React.Component {
+  title = 'Login';
+
+  render() {
+    return (
+      <h1>{this.title}</h1>
+    );
+  }
+}

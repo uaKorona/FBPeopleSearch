@@ -19,6 +19,7 @@ class App extends React.Component {
     actions: React.PropTypes.shape({
       gotoSettings: React.PropTypes.func.isRequired,
       gotoHome: React.PropTypes.func.isRequired,
+      gotoLogin: React.PropTypes.func.isRequired,
     }).isRequired,
     children: React.PropTypes.element,
   };
@@ -29,7 +30,6 @@ class App extends React.Component {
 
   static defaultProps = {
     children: '',
-    showSettingsIcon: true,
   };
 
   componentWillMount() {
