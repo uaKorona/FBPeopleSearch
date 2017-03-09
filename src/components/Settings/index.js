@@ -19,7 +19,7 @@ class Settings extends React.Component {
   };
 
   onLogoutTap = () => {
-    this.actions.logout();
+    this.props.actions.logout();
   };
 
   render() {

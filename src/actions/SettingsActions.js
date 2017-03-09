@@ -12,9 +12,13 @@ export function logout() {
         type: ROUTING,
         payload: {
           method: 'push',
-          ROUTE_LOGIN,
+          nextUrl: ROUTE_LOGIN,
         },
       });
     });
   };
+}
+
+export function clearHistory() {
+
 }

@@ -13,8 +13,8 @@ const routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path={ROUTE_SETTINGS} component={Settings} />
-      <Route path={ROUTE_LOGIN} component={Login} />
     </Route>
+    <Route path={ROUTE_LOGIN} component={Login} />
     <Route path="*" component={PageNotFound} />
   </div>
 );
