@@ -1,16 +1,48 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import styles from './App.css';
+import * as UserActions from '../../actions/UserActions';
+import * as MainMenuActions from '../../actions/MainMenuActions';
+import { ROUTE_ROOT } from '../../constants/Routing';
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   static propTypes = {
     children: React.PropTypes.element,
+    user: React.PropTypes.shape({
+      isNotAuthenticated: React.PropTypes.bool.isRequired,
+    }).isRequired,
+    actions: React.PropTypes.shape({
+      gotoHome: React.PropTypes.func.isRequired,
+      logout: React.PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static defaultProps = {
     children: '',
   };
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired,
+  };
+
+  static isUserNotAuthenticated(user) {
+    return user.isNotAuthenticated;
+  }
+
+  componentWillMount() {
+    if (App.isUserNotAuthenticated(this.props.user)) {
+      this.props.actions.logout();
+      return;
+    }
+
+    if (this.context.router.isActive(ROUTE_ROOT, true)) {
+      this.props.actions.gotoHome();
+    }
+  }
 
   render() {
     return (
@@ -20,3 +52,17 @@ export default class App extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ ...UserActions, ...MainMenuActions }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
