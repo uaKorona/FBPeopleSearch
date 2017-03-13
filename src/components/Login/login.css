@@ -1,0 +1,10 @@
+.loginContainer {
+    text-align: center;
+}
+
+.loginButton {
+    width: 50%;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    font-size: 2em !important;
+}
