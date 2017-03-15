@@ -2,6 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import { amber500, blue900 } from 'material-ui/styles/colors';
 import styles from './login.css';
+import logo from '../../content/images/logo.jpg';
 
 export default class Login extends React.Component {
   title = 'FBPeopleSearch';
@@ -26,7 +27,7 @@ export default class Login extends React.Component {
       <div className={styles.loginContainer}>
         <h1 style={this.styles.title}>{this.title}</h1>
         <div>
-          <img src="" alt=""/>
+          <img src={logo} alt="logo" />
         </div>
         <div className={styles.buttonContainer}>
           <RaisedButton

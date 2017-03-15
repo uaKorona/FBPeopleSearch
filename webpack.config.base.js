@@ -33,6 +33,12 @@ module.exports = {
                     'postcss-loader',
                 ],
             },
+          {
+            test: /\.jpg$/,
+            use: [
+              'file-loader',
+            ]
+          },
         ],
     }
 };
