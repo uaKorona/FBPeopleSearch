@@ -15,7 +15,6 @@ export default class Login extends React.Component {
       fontSize: '1em',
       color: 'white',
     },
-    overlayStyle: {},
     button: {
       padding: '0.3em 2em',
       height: 'auto',
