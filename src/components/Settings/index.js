@@ -16,6 +16,9 @@ class Settings extends React.Component {
     actions: React.PropTypes.shape({
       logout: React.PropTypes.func.isRequired,
     }).isRequired,
+    user: React.PropTypes.shape({
+      name: React.PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   onLogoutTap = () => {
@@ -23,13 +26,13 @@ class Settings extends React.Component {
   };
 
   render() {
+    const userName = this.props.user.name;
     return (
       <div>
-        <List>
-          <ListItem primaryText="Some action" leftIcon={<ContentInbox />} />
-        </List>
+        <h4>You&apos;re logged as {userName}</h4>
         <Divider />
         <List>
+          <ListItem primaryText="Some action" leftIcon={<ContentInbox />} />
           <ListItem
             primaryText="Logout"
             leftIcon={<MapsDirections />}
@@ -41,8 +44,10 @@ class Settings extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

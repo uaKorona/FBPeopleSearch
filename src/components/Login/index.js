@@ -1,11 +1,22 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import RaisedButton from 'material-ui/RaisedButton';
 import { amber500, blue900 } from 'material-ui/styles/colors';
 import styles from './login.css';
-import logo from '../../content/images/logo.jpg';
+import logo from '../../content/images/logo-login.jpg';
 
-export default class Login extends React.Component {
-  title = 'FBPeopleSearch';
+import * as UserActions from '../../actions/UserActions';
+
+
+class Login extends React.Component {
+
+  static propTypes = {
+    actions: React.PropTypes.shape({
+      login: React.PropTypes.func.isRequired,
+    }).isRequired,
+  };
 
   styles = {
     title: {
@@ -21,12 +32,16 @@ export default class Login extends React.Component {
     },
   };
 
+  login = () => {
+    this.props.actions.login();
+  };
+
   render() {
     return (
       <div className={styles.loginContainer}>
-        <h1 style={this.styles.title}>{this.title}</h1>
+        <h1 style={this.styles.title}>FBPeopleSearch</h1>
         <div>
-          <img src={logo} alt="logo" />
+          <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.buttonContainer}>
           <RaisedButton
@@ -35,9 +50,22 @@ export default class Login extends React.Component {
             buttonStyle={this.styles.button}
             overlayStyle={this.styles.button}
             backgroundColor={amber500}
+            onTouchTap={this.login}
           />
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps() {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(UserActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
