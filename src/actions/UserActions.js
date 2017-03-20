@@ -7,6 +7,10 @@ export function login() {
       type: LOGIN,
     });
 
+    FB.getLoginStatus((response) => {
+      console.log(response);
+    });
+
     setTimeout(() => {
       dispatch({
         type: LOGIN_SUCCESS,
