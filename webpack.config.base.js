@@ -40,5 +40,10 @@ module.exports = {
             ]
           },
         ],
-    }
+    },
+
+  externals: {
+    FB: 'FB',
+  },
+
 };

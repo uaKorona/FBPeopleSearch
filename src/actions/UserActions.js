@@ -1,5 +1,8 @@
 import { ROUTING, ROUTE_LOGIN, ROUTE_HOME } from '../constants/Routing';
 import { LOGIN, LOGIN_SUCCESS, LOGOUT } from '../constants/User';
+import FacebookWrapper from '../utils/facebookWrapper';
+
+const fb = new FacebookWrapper();
 
 export function login() {
   return (dispatch) => {
@@ -7,9 +10,7 @@ export function login() {
       type: LOGIN,
     });
 
-    FB.getLoginStatus((response) => {
-      console.log(response);
-    });
+    fb.getAuthStatus();
 
     setTimeout(() => {
       dispatch({
