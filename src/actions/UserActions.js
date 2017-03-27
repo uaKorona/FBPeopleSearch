@@ -10,7 +10,14 @@ export function login() {
       type: LOGIN,
     });
 
-    fb.getAuthStatus();
+    fb.getAuthStatus().then(
+      () => {
+        console.log(LOGIN_SUCCESS);
+      },
+      (err) => {
+        console.log(LOGIN, err);
+      }
+    );
 
     setTimeout(() => {
       dispatch({
