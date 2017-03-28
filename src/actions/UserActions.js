@@ -1,5 +1,5 @@
 import { ROUTING, ROUTE_LOGIN, ROUTE_HOME } from '../constants/Routing';
-import { LOGIN, LOGIN_SUCCESS, LOGOUT } from '../constants/User';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/User';
 import FacebookWrapper from '../utils/facebookWrapper';
 
 const fb = new FacebookWrapper();
@@ -14,9 +14,7 @@ export function login() {
       () => {
         console.log(LOGIN_SUCCESS);
       },
-      (err) => {
-        console.log(LOGIN, err);
-      }
+      err => console.log(LOGIN_FAIL),
     );
 
     setTimeout(() => {
