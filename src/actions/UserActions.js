@@ -2,7 +2,29 @@ import { ROUTING, ROUTE_LOGIN, ROUTE_HOME } from '../constants/Routing';
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/User';
 import FacebookWrapper from '../utils/facebookWrapper';
 
-const fb = new FacebookWrapper();
+let fb;
+
+export function getUserStatus() {
+  return (dispatch) => {
+    if (!fb) {
+      fb = new FacebookWrapper();
+    }
+
+    fb.getAuthStatus().then(
+      () => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: {
+            id: '3948fj4v45v-34f48cr8uf',
+            name: 'John Smith',
+          },
+        });
+      },
+      err => console.log(LOGIN_FAIL),
+    );
+
+  };
+}
 
 export function login() {
   return (dispatch) => {

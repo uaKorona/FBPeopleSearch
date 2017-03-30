@@ -3,7 +3,7 @@ import { LOGIN_SUCCESS, LOGOUT } from '../constants/User';
 const initialUserState = {
   id: null,
   name: '',
-  isNotAuthenticated: false,
+  isNotAuthenticated: true,
 };
 
 export default function user(state = initialUserState, action) {

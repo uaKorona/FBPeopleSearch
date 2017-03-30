@@ -18,6 +18,7 @@ class App extends React.Component {
     actions: React.PropTypes.shape({
       gotoHome: React.PropTypes.func.isRequired,
       logout: React.PropTypes.func.isRequired,
+      getUserStatus: React.PropTypes.func.isRequired,
     }).isRequired,
   };
 
@@ -34,6 +35,8 @@ class App extends React.Component {
   }
 
   componentWillMount() {
+    this.props.actions.getUserStatus();
+
     if (App.isUserNotAuthenticated(this.props.user)) {
       this.props.actions.logout();
       return;
@@ -42,6 +45,23 @@ class App extends React.Component {
     if (this.context.router.isActive(ROUTE_ROOT, true)) {
       this.props.actions.gotoHome();
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.user.isNotAuthenticated === nextProps.user.isNotAuthenticated) {
+      return;
+    }
+
+    if (App.isUserNotAuthenticated(nextProps.user)) {
+      this.props.actions.logout();
+      return;
+    }
+
+    if (this.context.router.isActive(ROUTE_ROOT, true)) {
+      this.props.actions.gotoHome();
+      return;
+    }
+
   }
 
   render() {

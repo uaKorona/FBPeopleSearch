@@ -50,6 +50,8 @@ module.exports = merge(config, {
     publicPath: '/',
     // match the output `publicPath`
 
+    host: 'frp.dev',
+
     port: 3000,
 
     //clientLogLevel: 'error',
