@@ -26,6 +26,7 @@
     firebase.initializeApp(config);
 </script>
 <script>
+    window.isFBLoaded = false;
     // Initialize FB
     window.fbAsyncInit = function() {
         FB.init({
@@ -35,6 +36,7 @@
             version    : 'v2.8'
         });
         FB.AppEvents.logPageView();
+        window.isFBLoaded = false;
     };
 
     (function(d, s, id){

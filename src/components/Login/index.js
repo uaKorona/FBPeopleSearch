@@ -15,6 +15,7 @@ class Login extends React.Component {
   static propTypes = {
     actions: React.PropTypes.shape({
       login: React.PropTypes.func.isRequired,
+      checkFbStatus: React.PropTypes.func.isRequired,
     }).isRequired,
   };
 
@@ -58,8 +59,10 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    fbState: state.fbState,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
