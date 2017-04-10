@@ -20,9 +20,8 @@ export function getUserStatus() {
           },
         });
       },
-      err => console.log(LOGIN_FAIL),
+      () => console.log(LOGIN_FAIL),
     );
-
   };
 }
 

@@ -59,9 +59,7 @@ class App extends React.Component {
 
     if (this.context.router.isActive(ROUTE_ROOT, true)) {
       this.props.actions.gotoHome();
-      return;
     }
-
   }
 
   render() {
@@ -86,3 +84,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
+
+// http://stackoverflow.com/questions/5334977/is-there-a-way-to-detect-if-the-facebook-javascript-sdk-loaded-successfully
