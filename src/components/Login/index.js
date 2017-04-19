@@ -19,6 +19,10 @@ class Login extends React.Component {
     }).isRequired,
   };
 
+  componentWillMount() {
+    this.props.actions.checkFbStatus();
+  }
+
   styles = {
     title: {
       color: blue900,
