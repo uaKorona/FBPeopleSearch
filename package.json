@@ -7,7 +7,8 @@
     "start": "webpack-dev-server",
     "prod": "webpack --config ./webpack.config.prod.js ",
     "dev": "webpack-dev-server --config ./webpack.config.dev.js --open ",
-    "eslint": "eslint ./src"
+    "eslint": "eslint ./src",
+    "deploy": "firebase deploy --only hosting"
   },
   "repository": {
     "type": "git",

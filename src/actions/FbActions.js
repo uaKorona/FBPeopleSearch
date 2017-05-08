@@ -1,6 +1,8 @@
 import { FB_LOADED, FB_LOADED_SUCCESS, FB_LOADED_FAIL } from '../constants/Fb';
-export function checkFbStatus() {
 
+/* eslint-disable import/prefer-default-export*/
+
+export function checkFbStatus() {
   return (dispatch) => {
     if (global.isFBLoaded) {
       dispatch({
@@ -18,7 +20,7 @@ export function checkFbStatus() {
           type: FB_LOADED_FAIL,
         });
       }
-    }, 300)
-  }
-
+    }, 300);
+  };
 }
+/* eslint-enable import/prefer-default-export*/

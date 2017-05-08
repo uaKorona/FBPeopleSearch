@@ -47,3 +47,5 @@ fabric.properties
 
 .gitignore
 .idea/
+functions/
+node_modules/

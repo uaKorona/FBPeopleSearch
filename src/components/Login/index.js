@@ -8,6 +8,7 @@ import styles from './login.css';
 import logo from '../../content/images/logo-login.jpg';
 
 import * as UserActions from '../../actions/UserActions';
+import * as FbActions from '../../actions/FbActions';
 
 
 class Login extends React.Component {
@@ -71,7 +72,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(UserActions, dispatch),
+    actions: bindActionCreators({ ...UserActions, ...FbActions }, dispatch),
   };
 }
 
