@@ -1,3 +1,6 @@
+let $script = require("scriptjs");
+
+
 class FacebookWrapper {
   static convertLoginStatus(status) {
     let checkingResult;
@@ -25,8 +28,23 @@ class FacebookWrapper {
     if (global.FB) {
       this.core = global.FB;
     } else {
-      throw new Error('FB API does not ready!');
+      //throw new Error('FB API does not ready!');
     }
+  }
+
+  initCore() {
+    return new Promise <any>(resolve => {
+        $script(FACEBOOK_API_URL, ()=> {
+          if (global.FB) {
+            this.core = global.FB;
+            this.core.init(this.config);
+            resolve();
+          } else {
+            throw Error('FB does not loaded');
+          }
+        });
+      });
+
   }
 
   getAuthStatus() {
