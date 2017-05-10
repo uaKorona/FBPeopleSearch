@@ -1,5 +1,7 @@
-let $script = require("scriptjs");
+const $script = require('scriptjs');
 
+const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/debug.js';
+const config = { appId: '652346414964497', xfbml: true, version: 'v2.8' };
 
 class FacebookWrapper {
   static convertLoginStatus(status) {
@@ -24,20 +26,20 @@ class FacebookWrapper {
   core = {};
   permissions = {};
 
-  constructor() {
+  /* constructor() {
     if (global.FB) {
-      this.core = global.FB;
-    } else {
-      //throw new Error('FB API does not ready!');
-    }
-  }
+     this.core = global.FB;
+     } else {
+     throw new Error('FB API does not ready!');
+     }
+  } */
 
   initCore() {
-    return new Promise <any>(resolve => {
-        $script(FACEBOOK_API_URL, ()=> {
+    return new Promise (resolve => {
+        $script(FACEBOOK_API_URL, () => {
           if (global.FB) {
             this.core = global.FB;
-            this.core.init(this.config);
+            this.core.init(config);
             resolve();
           } else {
             throw Error('FB does not loaded');

@@ -2,16 +2,12 @@ import { ROUTING, ROUTE_LOGIN, ROUTE_HOME } from '../constants/Routing';
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/User';
 import FacebookWrapper from '../utils/facebookWrapper';
 
-let fb;
+const fb = new FacebookWrapper();
 
 export function getUserStatus() {
   return (dispatch) => {
-    if (!fb) {
-      fb = new FacebookWrapper();
-    }
-
-    fb.getAuthStatus().then(
-      () => {
+    fb.initCore().then(() => {
+      fb.getAuthStatus().then(() => {
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
@@ -20,6 +16,9 @@ export function getUserStatus() {
           },
         });
       },
+        () => console.log(LOGIN_FAIL),
+      );
+    },
       () => console.log(LOGIN_FAIL),
     );
   };
