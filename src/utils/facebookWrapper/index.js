@@ -78,4 +78,5 @@ class FacebookWrapper {
   }
 }
 
-export default FacebookWrapper;
+const fb = new FacebookWrapper();
+export default fb;
