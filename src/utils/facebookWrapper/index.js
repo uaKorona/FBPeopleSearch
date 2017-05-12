@@ -26,27 +26,18 @@ class FacebookWrapper {
   core = {};
   permissions = {};
 
-  /* constructor() {
-    if (global.FB) {
-     this.core = global.FB;
-     } else {
-     throw new Error('FB API does not ready!');
-     }
-  } */
-
   initCore() {
-    return new Promise (resolve => {
-        $script(FACEBOOK_API_URL, () => {
-          if (global.FB) {
-            this.core = global.FB;
-            this.core.init(config);
-            resolve();
-          } else {
-            throw Error('FB does not loaded');
-          }
-        });
+    return new Promise((resolve) => {
+      $script(FACEBOOK_API_URL, () => {
+        if (global.FB) {
+          this.core = global.FB;
+          this.core.init(config);
+          resolve();
+        } else {
+          throw Error('FB does not loaded');
+        }
       });
-
+    });
   }
 
   getAuthStatus() {

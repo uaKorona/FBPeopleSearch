@@ -18,8 +18,56 @@
     font-size: 2em !important;
 }
 
+loadingContainer {
+    display: inline-block;
+}
+
+.loading {
+    display: inline-block;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 0.25rem solid rgba(255, 255, 255, 0.2);
+    border-top-color: #122c84;
+    -webkit-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+}
+
+
+
 @media screen and (max-width: 500px) { /* Mobile */
     .logo {
         width: 100%;
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes pulse {
+    50% {
+        background: white;
+    }
+}
+@keyframes pulse {
+    50% {
+        background: white;
     }
 }

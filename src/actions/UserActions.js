@@ -5,14 +5,14 @@ import fb from '../utils/facebookWrapper';
 export function getUserStatus() {
   return (dispatch) => {
     fb.getAuthStatus().then(() => {
-        dispatch({
-          type: LOGIN_SUCCESS,
-          payload: {
-            id: '3948fj4v45v-34f48cr8uf',
-            name: 'John Smith',
-          },
-        });
-      },
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: {
+          id: '3948fj4v45v-34f48cr8uf',
+          name: 'John Smith',
+        },
+      });
+    },
       () => console.log(LOGIN_FAIL),
     );
   };

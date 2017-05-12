@@ -10,10 +10,13 @@ import logo from '../../content/images/logo-login.jpg';
 import * as UserActions from '../../actions/UserActions';
 import * as FbActions from '../../actions/FbActions';
 
-
 class Login extends React.Component {
 
   static propTypes = {
+    fbState: React.PropTypes.shape({
+      loading: React.PropTypes.bool.isRequired,
+      isLoaded: React.PropTypes.bool.isRequired,
+    }).isRequired,
     actions: React.PropTypes.shape({
       login: React.PropTypes.func.isRequired,
       checkFbStatus: React.PropTypes.func.isRequired,
@@ -42,22 +45,39 @@ class Login extends React.Component {
     this.props.actions.login();
   };
 
+  renderFbState(loading) {
+    if (loading) {
+      return (
+        <div>
+          <span>Facebook loading ...</span>
+          <span className={styles.loading} />
+        </div>
+      );
+    }
+    return (
+      <RaisedButton
+        label="LOGIN"
+        labelStyle={this.styles.buttonLabel}
+        buttonStyle={this.styles.button}
+        overlayStyle={this.styles.button}
+        backgroundColor={amber500}
+        onTouchTap={this.login}
+      />
+    );
+  }
+
   render() {
+    const loading = this.props.fbState.loading;
+
     return (
       <div className={styles.loginContainer}>
         <h1 style={this.styles.title}>FBPeopleSearch</h1>
+
         <div>
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.buttonContainer}>
-          <RaisedButton
-            label="LOGIN"
-            labelStyle={this.styles.buttonLabel}
-            buttonStyle={this.styles.button}
-            overlayStyle={this.styles.button}
-            backgroundColor={amber500}
-            onTouchTap={this.login}
-          />
+          {this.renderFbState(loading)}
         </div>
       </div>
     );
