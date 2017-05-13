@@ -45,7 +45,7 @@ class Login extends React.Component {
     this.props.actions.login();
   };
 
-  renderFbState(loading) {
+  renderFbState(loading, isLoaded) {
     if (loading) {
       return (
         <div>
@@ -54,20 +54,30 @@ class Login extends React.Component {
         </div>
       );
     }
+
+    if (isLoaded) {
+      return (
+        <RaisedButton
+          label="LOGIN"
+          labelStyle={this.styles.buttonLabel}
+          buttonStyle={this.styles.button}
+          overlayStyle={this.styles.button}
+          backgroundColor={amber500}
+          onTouchTap={this.login}
+        />
+      );
+    }
+
     return (
-      <RaisedButton
-        label="LOGIN"
-        labelStyle={this.styles.buttonLabel}
-        buttonStyle={this.styles.button}
-        overlayStyle={this.styles.button}
-        backgroundColor={amber500}
-        onTouchTap={this.login}
-      />
+      <div>
+        <span>Sorry, guys. Facebook SDK couldn&apos;t be loaded now ...</span>
+      </div>
     );
   }
 
   render() {
     const loading = this.props.fbState.loading;
+    const isLoaded = this.props.fbState.isLoaded;
 
     return (
       <div className={styles.loginContainer}>
@@ -77,7 +87,7 @@ class Login extends React.Component {
           <img src={logo} className={styles.logo} alt="logo" />
         </div>
         <div className={styles.buttonContainer}>
-          {this.renderFbState(loading)}
+          {this.renderFbState(loading, isLoaded)}
         </div>
       </div>
     );

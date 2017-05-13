@@ -1,6 +1,6 @@
 const $script = require('scriptjs');
 
-const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/debug.js';
+const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/Adebug.js';
 const config = { appId: '652346414964497', xfbml: true, version: 'v2.8' };
 
 class FacebookWrapper {
@@ -13,11 +13,13 @@ class FacebookWrapper {
         break;
       case 'not_authorized':
         checkingResult = false;
-        console.log('The person is logged into Facebook, but not your app. Please log into this app.');
+        /** The person is logged into Facebook, but not your app.
+         * Please log into this app.
+         * */
         break;
       default:
         checkingResult = false;
-        console.log('The person is not logged into Facebook. Please log into Facebook');
+        /** console.log('The person is not logged into Facebook. Please log into Facebook'); */
     }
 
     return checkingResult;
@@ -27,14 +29,14 @@ class FacebookWrapper {
   permissions = {};
 
   initCore() {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       $script(FACEBOOK_API_URL, () => {
         if (global.FB) {
           this.core = global.FB;
           this.core.init(config);
           resolve();
         } else {
-          throw Error('FB does not loaded');
+          reject('FB does not loaded');
         }
       });
     });

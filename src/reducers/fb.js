@@ -15,7 +15,7 @@ export default function fbState(state = initialState, action) {
       return { ...state, loading: false, isLoaded: true };
 
     case FB_LOADED_FAIL:
-      return { ...state, initialState };
+      return { ...initialState };
 
     default:
       return state;
