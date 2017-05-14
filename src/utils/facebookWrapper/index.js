@@ -1,6 +1,6 @@
 const $script = require('scriptjs');
 
-const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/Adebug.js';
+const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/debug.js';
 const config = { appId: '652346414964497', xfbml: true, version: 'v2.8' };
 
 class FacebookWrapper {
