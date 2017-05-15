@@ -35,7 +35,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.getUserStatus();
+    // this.props.actions.getUserStatus();
 
     if (App.isUserNotAuthenticated(this.props.user)) {
       this.props.actions.logout();
@@ -48,6 +48,8 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+
     if (this.props.user.isNotAuthenticated === nextProps.user.isNotAuthenticated) {
       return;
     }

@@ -13,7 +13,7 @@ export function getUserStatus() {
         },
       });
     },
-      () => console.log(LOGIN_FAIL),
+      () => loginFail(dispatch),
     );
   };
 }
@@ -24,7 +24,7 @@ export function login() {
       type: LOGIN,
     });
 
-    fb.getAuthStatus().then(
+    fb.login().then(
       () => {
         console.log(LOGIN_SUCCESS);
       },
@@ -70,5 +70,10 @@ export function logout() {
 }
 
 export function clearHistory() {
+}
 
+function loginFail(dispatch) {
+  dispatch({
+    type: LOGIN_FAIL,
+  });
 }

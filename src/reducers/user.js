@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT } from '../constants/User';
+import { LOGIN_SUCCESS, LOGOUT, LOGIN_FAIL } from '../constants/User';
 
 const initialUserState = {
   id: null,
@@ -20,7 +20,8 @@ export default function user(state = initialUserState, action) {
     }
 
     case LOGOUT:
-      return { ...state, initialUserState, isNotAuthenticated: true };
+    case LOGIN_FAIL:
+      return { ...state, id: null, name: '', isNotAuthenticated: true };
 
     default:
       return state;

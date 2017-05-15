@@ -43,16 +43,15 @@ class FacebookWrapper {
   }
 
   getAuthStatus() {
-    return new Promise(
-      resolve => this.core.getLoginStatus((response) => {
-        const status = FacebookWrapper.convertLoginStatus(response && response.status);
+    return new Promise((resolve, reject) => this.core.getLoginStatus((response) => {
+      const status = FacebookWrapper.convertLoginStatus(response && response.status);
 
-        if (status) {
-          return resolve(status);
-        }
+      if (status) {
+        return resolve(status);
+      }
 
-        return this.login();
-      }),
+      return reject();
+    }),
     );
   }
 
@@ -66,7 +65,7 @@ class FacebookWrapper {
         }
 
         return reject('Cannot connect with Facebook. Sorry ... ');
-      }, this.permissions);
+      });
     });
   }
 }
