@@ -51,7 +51,7 @@ class App extends React.Component {
     }
 
     if (App.isUserNotAuthenticated(nextProps.user)) {
-      this.props.actions.logoutUser();
+      // this.props.actions.logoutUser();
       return;
     }
 

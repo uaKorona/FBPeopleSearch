@@ -18,6 +18,7 @@ class Settings extends React.Component {
     }).isRequired,
     user: React.PropTypes.shape({
       name: React.PropTypes.string.isRequired,
+      isNotAuthenticated: React.PropTypes.bool.isRequired,
     }).isRequired,
   };
 

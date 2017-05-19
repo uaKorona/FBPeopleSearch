@@ -1,7 +1,7 @@
 const $script = require('scriptjs');
 
 const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/debug.js';
-const config = { appId: '652346414964497', xfbml: true, version: 'v2.8' };
+const config = { appId: '652346414964497', xfbml: false, version: 'v2.8' };
 
 class FacebookWrapper {
   static convertLoginStatus(status) {
@@ -72,10 +72,7 @@ class FacebookWrapper {
   logout() {
     return new Promise((resolve) => {
       if (this.core.logout) {
-        this.core.logout((response) => {
-          console.log('logout', response);
-          return resolve();
-        });
+        this.core.logout(() => resolve());
       }
 
       return resolve();

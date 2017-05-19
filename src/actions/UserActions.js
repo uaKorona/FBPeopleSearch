@@ -1,6 +1,6 @@
-import { ROUTING, ROUTE_LOGIN, ROUTE_HOME } from '../constants/Routing';
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../constants/User';
 import fb from '../utils/facebookWrapper';
+import { gotoLogin, gotoHome } from './MainMenuActions';
 
 function loginFail(dispatch) {
   dispatch({
@@ -24,16 +24,6 @@ function logout(dispatch) {
   });
 }
 
-function goHome(dispatch) {
-  dispatch({
-    type: ROUTING,
-    payload: {
-      method: 'push',
-      nextUrl: ROUTE_HOME,
-    },
-  });
-}
-
 export function login() {
   return (dispatch) => {
     dispatch({
@@ -43,7 +33,7 @@ export function login() {
     fb.login().then(
       () => {
         loginSuccess(dispatch);
-        goHome(dispatch);
+        dispatch(gotoHome());
       },
       err => loginFail(dispatch),
     );
@@ -53,7 +43,7 @@ export function login() {
 export function getUserStatus() {
   return (dispatch) => {
     fb.getAuthStatus().then(
-      () => goHome(dispatch),
+      () => dispatch(gotoHome()),
       () => dispatch(login()),
     );
   };
@@ -65,7 +55,7 @@ export function logoutUser() {
     fb.logout().then(
       () => {
         logout(dispatch);
-        setTimeout(() => goHome(dispatch));
+        setTimeout(() => dispatch(gotoLogin()));
       },
       err => console.warn(err),
     );
