@@ -68,6 +68,20 @@ class FacebookWrapper {
       });
     });
   }
+
+  logout() {
+    return new Promise((resolve) => {
+      if (this.core.logout) {
+        this.core.logout((response) => {
+          console.log('logout', response);
+          return resolve();
+        });
+      }
+
+      return resolve();
+    });
+  }
+
 }
 
 const fb = new FacebookWrapper();

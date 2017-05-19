@@ -24,7 +24,9 @@ class Login extends React.Component {
   };
 
   componentWillMount() {
-    this.props.actions.checkFbStatus();
+    if (!this.props.fbState.isLoaded) {
+      this.props.actions.checkFbStatus();
+    }
   }
 
   styles = {

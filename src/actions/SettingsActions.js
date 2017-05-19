@@ -1,22 +1,7 @@
-import { ROUTING, ROUTE_LOGIN } from '../constants/Routing';
-import { LOGOUT } from '../constants/Settings';
+import { logoutUser } from './UserActions';
 
 export function logout() {
-  return (dispatch) => {
-    dispatch({
-      type: LOGOUT,
-    });
-
-    setTimeout(() => {
-      dispatch({
-        type: ROUTING,
-        payload: {
-          method: 'push',
-          nextUrl: ROUTE_LOGIN,
-        },
-      });
-    });
-  };
+  return dispatch => dispatch(logoutUser());
 }
 
 export function clearHistory() {
