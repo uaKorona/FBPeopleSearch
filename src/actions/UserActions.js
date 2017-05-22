@@ -8,12 +8,12 @@ function loginFail(dispatch) {
   });
 }
 
-function loginSuccess(dispatch) {
+function loginSuccess(dispatch, user) {
   dispatch({
     type: LOGIN_SUCCESS,
     payload: {
-      id: '3948fj4v45v-34f48cr8uf',
-      name: 'John Smith',
+      id: user.id || '3948fj4v45v-34f48cr8uf',
+      name: user.name || 'John Smith',
     },
   });
 }
@@ -32,8 +32,8 @@ export function login() {
 
     fb.login().then(
       () => {
-        loginSuccess(dispatch);
         dispatch(gotoHome());
+        fb.getProfile().then(user => loginSuccess(dispatch, user));
       },
       err => loginFail(dispatch),
     );

@@ -79,6 +79,12 @@ class FacebookWrapper {
     });
   }
 
+  getProfile() {
+    return new Promise((resolve) => {
+      this.core.api('/me', 'GET', { fields: 'id,name' }, response => resolve(response));
+    });
+  }
+
 }
 
 const fb = new FacebookWrapper();
