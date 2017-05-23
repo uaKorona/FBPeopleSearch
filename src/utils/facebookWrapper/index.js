@@ -1,7 +1,7 @@
 const $script = require('scriptjs');
 
 const FACEBOOK_API_URL = '//connect.facebook.net/en_US/sdk/debug.js';
-//const config = { appId: '652346414964497', xfbml: false, version: 'v2.8' }; /** test */
+// const config = { appId: '652346414964497', xfbml: false, version: 'v2.8' }; /** test */
 const config = { appId: '652341541631651', xfbml: false, version: 'v2.8' }; /** real */
 
 class FacebookWrapper {
