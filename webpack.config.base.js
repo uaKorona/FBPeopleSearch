@@ -43,6 +43,7 @@ module.exports = {
 
   externals: {
     FB: 'FB',
+    FB_CONFIG: 'FB_CONFIG'
   },
 
 };

@@ -3,10 +3,11 @@ const merge = require('webpack-merge');
 const config = require('./webpack.config.base');
 
 const GLOBALS = {
-    'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-    },
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+  'process.env': {
+    'NODE_ENV': JSON.stringify('production')
+  },
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false')),
+  FB_CONFIG: JSON.stringify('//connect.facebook.net/en_US/sdk/debug.js'),
 };
 
 module.exports = merge(config, {

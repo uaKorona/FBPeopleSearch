@@ -8,7 +8,8 @@ const GLOBALS = {
   'process.env': {
     'NODE_ENV': JSON.stringify('development')
   },
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true')),
+  FB_CONFIG: JSON.stringify('//connect.facebook.net/en_US/sdk/debug.js'),
 };
 
 module.exports = merge(config, {
