@@ -2,6 +2,7 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const config = require('./webpack.config.base');
+const FB_CONFIG = require('./FB_CONFIG');
 
 
 const GLOBALS = {
@@ -9,7 +10,7 @@ const GLOBALS = {
     'NODE_ENV': JSON.stringify('development')
   },
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true')),
-  FB_CONFIG: JSON.stringify('//connect.facebook.net/en_US/sdk/debug.js'),
+  FB_CONFIG: FB_CONFIG.FB_CONFIG_DEV,
 };
 
 module.exports = merge(config, {

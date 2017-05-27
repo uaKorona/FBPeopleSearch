@@ -1,13 +1,14 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const config = require('./webpack.config.base');
+const FB_CONFIG = require('./FB_CONFIG');
 
 const GLOBALS = {
   'process.env': {
     'NODE_ENV': JSON.stringify('production')
   },
   __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false')),
-  FB_CONFIG: JSON.stringify('//connect.facebook.net/en_US/sdk/debug.js'),
+  FB_CONFIG: FB_CONFIG.FB_CONFIG_PROD,
 };
 
 module.exports = merge(config, {
