@@ -4,6 +4,7 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import { blue900 } from 'material-ui/styles/colors';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -63,12 +64,19 @@ class Home extends React.Component {
 
   leftIcon;
 
+  inlineStyles = {
+    appBar: {
+      backgroundColor: blue900,
+    },
+  };
+
   render() {
     return (
       <div>
         <AppBar
           title="FBPeopleSearch"
           iconElementLeft={this.leftIcon}
+          style={this.inlineStyles.appBar}
         />
 
         {this.props.children}

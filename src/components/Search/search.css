@@ -1,3 +1,12 @@
 .search__block {
-    padding-top: 1em;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.buttonContainer {
+    padding-top: 2em;
 }
