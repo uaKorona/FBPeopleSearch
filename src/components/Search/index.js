@@ -1,4 +1,6 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -6,12 +8,30 @@ import { amber500 } from 'material-ui/styles/colors';
 
 import styles from './search.css';
 
+import * as SearchActions from '../../actions/SearchActions';
+import * as MainMenuActions from '../../actions/MainMenuActions';
+
 class Search extends React.Component {
+
+  static propTypes = {
+    search: React.PropTypes.shape({
+      people: React.PropTypes.array.isRequired,
+      isSearchCompleted: React.PropTypes.bool.isRequired,
+    }).isRequired,
+    actions: React.PropTypes.shape({
+      search: React.PropTypes.func.isRequired,
+    }).isRequired,
+  };
 
   constructor(props) {
     super(props);
     this.state = { errorText: '' };
   }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
 
   onSearchTextChange = (event, newValue) => {
     this.searchText = newValue;
@@ -32,6 +52,7 @@ class Search extends React.Component {
     }
 
     this.clearError();
+    this.props.actions.search(this.searchText);
   };
 
   setError(errorText) {
@@ -84,4 +105,16 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+function mapStateToProps(state) {
+  return {
+    search: state.people,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ ...SearchActions, ...MainMenuActions }, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

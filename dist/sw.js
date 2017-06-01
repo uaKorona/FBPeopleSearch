@@ -6,7 +6,7 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/4618116866abf35e78bb389375a96687.jpg',
+        '/*.jpg',
         '/debug.js'
       ]);
     })

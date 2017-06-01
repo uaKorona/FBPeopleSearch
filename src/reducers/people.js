@@ -25,7 +25,7 @@ export default function people(state = initialState, action) {
     }
 
     case SEARCH_RESET:
-      return initialState;
+      return { ...initialState };
 
     default:
       return state;

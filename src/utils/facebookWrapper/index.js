@@ -84,6 +84,15 @@ class FacebookWrapper {
     });
   }
 
+  search(searchText) {
+    return new Promise((resolve) => {
+      this.core.api('/search', 'GET', { q: searchText, type: 'user' }, (response) => {
+        console.log(response);
+        return resolve(response.data);
+      });
+    });
+  }
+
 }
 
 const fb = new FacebookWrapper();
